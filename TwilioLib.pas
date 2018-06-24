@@ -74,7 +74,6 @@ begin
 
   resultVar.Values['raw'] := S;
   Output := resultVar;
-  //Result := resultVar;
 end;
 
 end.
