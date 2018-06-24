@@ -18,6 +18,6 @@ var
   twilio_result: TStringList;
 begin
   twilio := TTwilio.create('YourAccountSid', 'YourAccountToken');
-  TwilioResult := twilio.send_sms('from_number', 'to_number', 'This is another test, this time using the library');
+  TwilioResult := twilio.send_sms('from_number', 'to_number', 'String to send');
 end;
 ```
