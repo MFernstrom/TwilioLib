@@ -21,3 +21,6 @@ begin
   TwilioResult := twilio.send_sms('from_number', 'to_number', 'String to send');
 end;
 ```
+
+## Future
+Right now it only supports sending single SMS, in the future I'll be implementing more functionality that Twilio offers.
