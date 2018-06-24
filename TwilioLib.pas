@@ -8,13 +8,13 @@ uses
   Classes, SysUtils, fphttpclient, fpjson, jsonparser, Dialogs, TypInfo;
 
 type
-  TTwilio = class
+  TTwilio = class(TInterfacedObject)
     private
       account_sid, auth_token, url : String;
 
     public
       constructor create(sid, token : String);
-      function send_sms(from_number, to_number, message: String): TStringlist;
+      procedure send_sms(from_number, to_number, message: String; VAR Output:TStringList );
   end;
   var
     account_sid, auth_token, send_from_number, send_to_number: String;
@@ -28,7 +28,7 @@ begin
   url := 'https://api.twilio.com/2010-04-01/Accounts/' + sid + '/Messages.json';
 end;
 
-function TTwilio.send_sms( from_number, to_number, message: String ): TStringlist;
+procedure TTwilio.send_sms( from_number, to_number, message: String; VAR Output:TStringList );
 var
   resultVar, postVars: TStringlist;
   s: String;
@@ -37,6 +37,11 @@ var
   jData : TJSONData;
   jObject : TJSONObject;
 begin
+  if Not Assigned(Output) then
+    raise exception.create('Output variable isn''t initialized') at
+    get_caller_addr(get_frame),
+    get_caller_frame(get_frame);
+
   // Initialise result variable, and set defaults
   resultVar := TStringlist.Create;
   resultVar.CommaText := 'sid=,date_created=,date_updated=,date_sent=,account_sid=,to=,from=,body=,status=,num_segments=,num_media=,direction=,api_version=,price=,price_unit=,error_code=,error_message=,uri=,raw=';
@@ -68,7 +73,8 @@ begin
   end;
 
   resultVar.Values['raw'] := S;
-  Result := resultVar;
+  Output := resultVar;
+  //Result := resultVar;
 end;
 
 end.
