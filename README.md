@@ -17,8 +17,12 @@ var
   twilio: TTwilio;
   twilio_result: TStringList;
 begin
+  twilio_result := TStringList.Create;
+  
   twilio := TTwilio.create('YourAccountSid', 'YourAccountToken');
-  TwilioResult := twilio.send_sms('from_number', 'to_number', 'String to send');
+  twilio.send_sms('from_number', 'to_number', 'String to send', twilio_result);
+  
+  twilio_result.free;
 end;
 ```
 
