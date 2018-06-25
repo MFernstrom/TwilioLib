@@ -1,14 +1,3 @@
-# TwilioLib
-A Freepascal library for sending SMS with Twilio
-
-## Use
-Add TwilioLib to your uses clause
-
-Instantiate a TTwilio variable, send sms :)
-
-### Example
-
-```
 program testsms.pas;
 {$mode objfpc}
 uses
@@ -41,10 +30,3 @@ end;
 begin
   SendSMS;
 end.
-```
-
-## Requirements
-Well you need to have a Twilio account.
-
-## Future
-Right now it only supports sending single SMS, in the future I'll be implementing more functionality that Twilio offers.
