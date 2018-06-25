@@ -9,21 +9,38 @@ Instantiate a TTwilio variable, send sms :)
 ### Example
 
 ```
+program testsms.pas;
+{$mode objfpc}
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, TwilioLib;
-
-procedure SendSMS();
+  Sysutils, Classes, TwilioLib;
+ 
+procedure SendSMS;
 var
   twilio: TTwilio;
-  twilio_result: TStringList;
+  twilio_result: TStrings;
 begin
   twilio_result := TStringList.Create;
-  
-  twilio := TTwilio.create('YourAccountSid', 'YourAccountToken');
-  twilio.send_sms('from_number', 'to_number', 'String to send', twilio_result);
-  
-  twilio_result.free;
+  try
+    twilio := TTwilio.create('your sid', 'your secret');
+    try
+      try
+        twilio.send_sms('+OutPhone', '+ToPhone', 'message', twilio_result);
+      except
+       on E:ETWilioException do
+         writeln(e.message)
+       else raise;
+      end;
+    finally
+      Twilio.Free;
+    end;
+  finally
+    twilio_result.free;
+  end;
 end;
+ 
+begin
+  SendSMS;
+end.
 ```
 
 ## Requirements
