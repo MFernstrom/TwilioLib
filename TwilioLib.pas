@@ -1,3 +1,9 @@
+{======================================================
+  Author      Marcus Fernström
+  License     GPL3
+  Version     0.1
+  GitHub      https://github.com/MFernstrom/TwilioLib
+=======================================================}
 unit TwilioLib;
 
 {$mode objfpc}{$H+}
