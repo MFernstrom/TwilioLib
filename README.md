@@ -44,7 +44,7 @@ end.
 ```
 
 ## Requirements
-Well you need to have a Twilio account.
+You need to have a Twilio account, and your account SID.
 
 ## Future
 Right now it only supports sending single SMS, in the future I'll be implementing more functionality that Twilio offers.
