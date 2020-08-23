@@ -2,7 +2,7 @@
   Author       Marcus Fernström
   Contributor  Thaddy de Koning
   License      LGPL3
-  Version      0.3
+  Version      0.4
   GitHub       https://github.com/MFernstrom/TwilioLib
 =======================================================}
 unit TwilioLib;
@@ -12,7 +12,7 @@ unit TwilioLib;
 interface
  
 uses
-  Classes, SysUtils, fphttpclient, fpjson, jsonparser;
+  Classes, SysUtils, fphttpclient, fpjson, jsonparser, opensslsockets;
  
 type
   ITwilio = interface
